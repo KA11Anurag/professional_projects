@@ -18,7 +18,7 @@ args = getResolvedOptions(sys.argv, args_lst)
 bucket_name = args['S3 Bucket']
 secret_id = args['Secret Id']
 redshift_host = args['DataBase Host Name']
-redshift_database = args['redshift_database']
+redshift_database = args['Database']
 catalog_connection = args['catalog_connection']
 
 # assigning bu name and source name

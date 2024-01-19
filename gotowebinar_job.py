@@ -20,8 +20,8 @@ args = getResolvedOptions(sys.argv, args_lst)
 
 bucket_name = args['bucket_name']
 secret_id = args['secret_id']
-redshift_host = args['redshift_host']
-redshift_database = args['redshift_database']
+redshift_host = args['DataBase Host Name']
+redshift_database = args['DataBase']
 catalog_connection = args['catalog_connection']
 cloudwatch_log_group = args['cloudwatch_log_group']
 
@@ -51,8 +51,8 @@ api_params = json.loads(args['api_params'])
 print(api_params)
 
 # list of objects
-object_names = ['webinars', 'organizer_sessions', 'registrants', 'registrant_fields', 'session_performance', 'session_polls', 'session_questions',
-                'session_surveys', 'session_attendees', 'attendees', 'attendee_poll_answers', 'attendee_questions', 'attendee_survey_answers', 'registrant']
+object_names = ['webinars', 'organizer_sessions', 'registrants', 'registrant_fields', 'session_performance',
+                'attendees', 'attendee_poll_answers', 'registrant']
 
 # API for data fetch 
 base_url = 'https://URL NAME'
@@ -71,7 +71,7 @@ for object_name in object_names:
             # get data for webinar table dependent objects
             get_webinar_dependent_object_data(base_url, api_params, object_name, webinar_json_file, bu_name, source_name, create_cloudwatch_log, cloudwatch_log_group, cloudwatch_log_stream)
 
-        elif object_name in ['session_performance','session_polls', 'session_questions', 'session_surveys', 'session_attendees']:
+        elif object_name in ['session_performance']:
             
             with open('/tmp/organizer_sessions.json', 'r', encoding="utf8") as file:
                 session_json_file = json.load(file)
